@@ -85,3 +85,5 @@ kirki.control['kirki-select'] = {
         } ) );
     }
 };
+
+wp.customize.controlConstructor['kirki-select'] = wp.customize.kirkiDynamicControl.extend( {} );
