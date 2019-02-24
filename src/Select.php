@@ -51,6 +51,47 @@ class Select extends Base {
 	public $multiple = 1;
 
 	/**
+	 * Enqueue control related scripts/styles.
+	 *
+	 * @access public
+	 */
+	public function enqueue() {
+		parent::enqueue();
+
+		$url = apply_filters(
+			'kirki_package_url_control_select',
+			Kirki::$url . 'vendor/kirki-framework/control-select/src'
+		);
+		$url = untrailingslashit( $url );
+
+		// Enqueue selectWoo.
+		wp_enqueue_script( 'selectWoo', "$url/assets/scripts/selectWoo/js/selectWoo.full.js", array( 'jquery' ), '1.0.1', true );
+		wp_enqueue_style( 'selectWoo', "$url/assets/scripts/selectWoo/css/selectWoo.css", array(), '1.0.1' );
+		
+		// Enqueue the script.
+		wp_enqueue_script(
+			'kirki-control-select',
+			"$url/assets/scripts/control.js",
+			[
+				'kirki-script',
+				'jquery',
+				'customize-base',
+				'selectWoo',
+			],
+			KIRKI_VERSION,
+			false
+		);
+
+		// Enqueue the style.
+		wp_enqueue_style(
+			'kirki-control-select-style',
+			"$url/assets/styles/style.css",
+			[],
+			KIRKI_VERSION
+		);
+	}
+
+	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 *
 	 * @see WP_Customize_Control::to_json()
