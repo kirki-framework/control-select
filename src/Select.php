@@ -60,7 +60,7 @@ class Select extends Base {
 
 		$url = apply_filters(
 			'kirki_package_url_control_select',
-			Kirki::$url . 'vendor/kirki-framework/control-select/src'
+			trailingslashit( Kirki::$url ) . 'vendor/kirki-framework/control-select/src'
 		);
 		$url = untrailingslashit( $url );
 
