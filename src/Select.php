@@ -73,7 +73,6 @@ class Select extends Base {
 			'kirki-control-select',
 			"$url/assets/scripts/control.js",
 			[
-				'kirki-script',
 				'jquery',
 				'customize-base',
 				'selectWoo',
