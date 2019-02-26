@@ -15,6 +15,10 @@ add_action(
     }
 );
 
+class_alias( 'Kirki\Field\Dropdown_Pages', 'Kirki_Field_Dropdown_Pages' );
+class_alias( 'Kirki\Field\Preset', 'Kirki_Field_Preset' );
+class_alias( 'Kirki\Field\Select', 'Kirki_Field_Select' );
+
 add_action(
     'customize_controls_print_footer_scripts',
     function() {
