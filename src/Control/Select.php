@@ -2,7 +2,7 @@
 /**
  * Customizer Control: kirki-select.
  *
- * @package   kirki-framework/control-radio
+ * @package   kirki-framework/control-select
  * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
  * @license   https://opensource.org/licenses/MIT
  * @since     1.0
