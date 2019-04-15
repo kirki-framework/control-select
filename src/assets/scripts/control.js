@@ -1,6 +1,4 @@
-var kirki = kirki || {};
-kirki.input = kirki.input || {};
-
+/* global kirki */
 wp.customize.controlConstructor['kirki-select'] = wp.customize.kirkiDynamicControl.extend( {
     initKirkiControl: function() {
         var control = this,
