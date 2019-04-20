@@ -20,8 +20,17 @@ wp.customize.controlConstructor['kirki-select'] = wp.customize.kirkiDynamicContr
 
         if ( control.params.select_args ) {
             selectWooOptions = jQuery.extend( selectWooOptions, control.params.select_args );
-            if ( 'string' === typeof selectWooOptions.data && 'object' === typeof window[ selectWooOptions.data ] ) {
-                selectWooOptions.data = window[ selectWooOptions.data ];
+            if ( 'string' === typeof selectWooOptions.data ) {
+                if ( 'function' === typeof window[ selectWooOptions.data ] ) {
+                    selectWooOptions.data = window[ selectWooOptions.data ]();
+                } else if ( 'object' === typeof window[ selectWooOptions.data ] ) {
+                    selectWooOptions.data = window[ selectWooOptions.data ];
+                }
+            }
+            if ( selectWooOptions.ajax ) {
+                if ( 'string' === typeof selectWooOptions.ajax.processResults && 'function' === typeof window[ selectWooOptions.ajax.processResults ] ) {
+                    selectWooOptions.ajax.processResults = window[ selectWooOptions.ajax.processResults ]( control );
+                }
             }
         }
         jQuery( element ).selectWoo( selectWooOptions ).on( 'change', function() {
