@@ -47,6 +47,9 @@ wp.customize.controlConstructor['kirki-select'] = wp.customize.kirkiDynamicContr
 	doSelectAction: function( action, arg ) {
 		var control = this;
 
+		if ( ! this.selectElement ) {
+			return;
+		}
 		switch ( action ) {
 
 			case 'disableOption':
@@ -63,6 +66,11 @@ wp.customize.controlConstructor['kirki-select'] = wp.customize.kirkiDynamicContr
 						jQuery( option ).attr( 'disabled', false );
 					}
 				} );
+				break;
+			
+			case 'selectOption':
+				jQuery( this.selectElement ).val( arg );
+				jQuery( this.selectElement ).trigger( 'change' );
 				break;
 		}
 		jQuery( this.selectElement ).selectWoo( 'destroy' );
