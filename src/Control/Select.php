@@ -80,15 +80,25 @@ class Select extends Base {
 	public function enqueue() {
 		parent::enqueue();
 
-		// Enqueue selectWoo.
-		wp_enqueue_script( 'selectWoo', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/selectWoo/js/selectWoo.full.js' ), [ 'jquery' ], '1.0.1', true );
-		wp_enqueue_style( 'selectWoo', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/selectWoo/css/selectWoo.css' ), [], '1.0.1' );
-
 		// Enqueue the script.
-		wp_enqueue_script( 'kirki-control-select', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base', 'selectWoo' ], self::$control_ver, false );
+		wp_enqueue_script(
+			'kirki-control-select',
+			URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/main.js' ),
+			[
+				'customize-controls',
+				'customize-base',
+				'wp-element',
+				'wp-compose',
+				'wp-components',
+				'jquery',
+				'wp-i18n',
+			],
+			time(),
+			false
+		);
 
 		// Enqueue the style.
-		wp_enqueue_style( 'kirki-control-select-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], self::$control_ver );
+		wp_enqueue_style( 'kirki-control-select-style', URL::get_from_path( dirname( __DIR__ ) . '/style.css' ), [], self::$control_ver );
 	}
 
 	/**
